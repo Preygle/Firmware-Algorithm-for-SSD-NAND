@@ -1,0 +1,148 @@
+=========================================================
+      SSD FIRMWARE ALGORITHMS: FULL SIMULATION DATA      
+=========================================================
+
+Configuration:
+- Total Blocks: 50
+- Pages Per Block: 64
+- Physical Capacity (Pages): 3200
+- Logical Capacity (LBAs): 2880
+- Total Write Operations Simulated per Case: 100,000
+
+=========================================================
+
+#########################################################
+   CASE: SEQUENTIAL WORKLOAD
+#########################################################
+
+--- INPUT (THE WORKLOAD) ---
+Description: A massive array of Logical Block Addresses (LBAs) sent by the OS to the SSD.
+Total Inputs: 100,000 writes.
+Sample First 50 Writes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+...
+
+--- PROCESSING ---
+Running inputs through Baseline FTL Algorithm...
+Running inputs through Adaptive (Elite) FTL Algorithm...
+
+--- OUTPUT (METRICS) ---
+
+1. BASELINE FTL RESULTS:
+  - Strategy: Baseline FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 100,000
+  - Write Amplifi. Factor (WAF): 1.000
+  - Garbage Collection Count: 1,516
+  - Wear Variance: 21.818
+  - Max Erase Count: 32
+  - Min Erase Count: 10
+  - Proj. Lifetime (Host Writes): 31,250,000
+
+2. ADAPTIVE FTL RESULTS:
+  - Strategy: Adaptive FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 100,000
+  - Write Amplifi. Factor (WAF): 1.000
+  - Garbage Collection Count: 1,515
+  - Wear Variance: 18.810
+  - Max Erase Count: 31
+  - Min Erase Count: 0
+  - Proj. Lifetime (Host Writes): 32,258,064
+
+3. COMPARISON (ADAPTIVE VS BASELINE):
+  - WAF Improvement: 0.000 (Tie)
+  - Wear Variance Improvement: 3.008 (Adaptive is Better - Erase cycles are spread far more evenly)
+  - Estimated Lifetime Extension: +1,008,064 Host Writes
+
+=========================================================
+
+#########################################################
+   CASE: RANDOM WORKLOAD
+#########################################################
+
+--- INPUT (THE WORKLOAD) ---
+Description: A massive array of Logical Block Addresses (LBAs) sent by the OS to the SSD.
+Total Inputs: 100,000 writes.
+Sample First 50 Writes: [2018, 1234, 262, 2787, 2446, 2756, 463, 1410, 119, 546, 1708, 399, 767, 424, 815, 1236, 1139, 887, 1361, 514, 187, 361, 744, 1209, 2431, 2333, 2704, 425, 2649, 1616, 1882, 2509, 227, 2551, 378, 2094, 1291, 907, 2168, 792, 2129, 154, 1984, 550, 694, 250, 1363, 33, 2102, 2609]
+...
+
+--- PROCESSING ---
+Running inputs through Baseline FTL Algorithm...
+Running inputs through Adaptive (Elite) FTL Algorithm...
+
+--- OUTPUT (METRICS) ---
+
+1. BASELINE FTL RESULTS:
+  - Strategy: Baseline FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 1,027,137
+  - Write Amplifi. Factor (WAF): 10.271
+  - Garbage Collection Count: 16,004
+  - Wear Variance: 220.194
+  - Max Erase Count: 362
+  - Min Erase Count: 288
+  - Proj. Lifetime (Host Writes): 2,762,430
+
+2. ADAPTIVE FTL RESULTS:
+  - Strategy: Adaptive FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 558,154
+  - Write Amplifi. Factor (WAF): 5.582
+  - Garbage Collection Count: 8,694
+  - Wear Variance: 8.986
+  - Max Erase Count: 191
+  - Min Erase Count: 169
+  - Proj. Lifetime (Host Writes): 5,235,602
+
+3. COMPARISON (ADAPTIVE VS BASELINE):
+  - WAF Improvement: 4.689 (Adaptive is Better)
+  - Wear Variance Improvement: 211.208 (Adaptive is Better - Erase cycles are spread far more evenly)
+  - Estimated Lifetime Extension: +2,473,172 Host Writes
+
+=========================================================
+
+#########################################################
+   CASE: HOTSPOT WORKLOAD (80/20)
+#########################################################
+
+--- INPUT (THE WORKLOAD) ---
+Description: A massive array of Logical Block Addresses (LBAs) sent by the OS to the SSD.
+Total Inputs: 100,000 writes.
+Sample First 50 Writes: [1890, 350, 233, 394, 411, 452, 378, 45, 277, 2274, 112, 358, 570, 168, 2155, 792, 374, 409, 446, 489, 273, 523, 1159, 499, 233, 332, 28, 405, 570, 3, 330, 618, 289, 1662, 493, 477, 2652, 32, 564, 330, 181, 77, 402, 542, 255, 546, 328, 555, 142, 6]
+...
+
+--- PROCESSING ---
+Running inputs through Baseline FTL Algorithm...
+Running inputs through Adaptive (Elite) FTL Algorithm...
+
+--- OUTPUT (METRICS) ---
+
+1. BASELINE FTL RESULTS:
+  - Strategy: Baseline FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 499,430
+  - Write Amplifi. Factor (WAF): 4.994
+  - Garbage Collection Count: 7,757
+  - Wear Variance: 41.320
+  - Max Erase Count: 168
+  - Min Erase Count: 142
+  - Proj. Lifetime (Host Writes): 5,952,380
+
+2. ADAPTIVE FTL RESULTS:
+  - Strategy: Adaptive FTL
+  - Host Writes: 100,000
+  - Total NAND Writes: 508,373
+  - Write Amplifi. Factor (WAF): 5.084
+  - Garbage Collection Count: 7,915
+  - Wear Variance: 6.570
+  - Max Erase Count: 165
+  - Min Erase Count: 152
+  - Proj. Lifetime (Host Writes): 6,060,606
+
+3. COMPARISON (ADAPTIVE VS BASELINE):
+  - WAF Improvement: -0.090 (Baseline is Better)
+  - Wear Variance Improvement: 34.750 (Adaptive is Better - Erase cycles are spread far more evenly)
+  - Estimated Lifetime Extension: +108,226 Host Writes
+
+=========================================================
+
