@@ -49,3 +49,4 @@ class Metrics:
              print(f"Final Tuned Beta (Wear Leveling): {self.ftl.beta:.2f}")
              
         print("-" * 30)
+
