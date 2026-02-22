@@ -11,7 +11,7 @@ Charts are generated fresh every run — nothing is pre-loaded.
 from nand         import NANDFlash
 from baseline_ftl import BaselineFTL
 from adaptive_ftl import AdaptiveFTL
-from workload     import WorkloadGenerator
+from workload_generator import WorkloadGenerator
 from metrics_engine  import MetricsEngine, CHECKPOINT_EVERY
 from visualization   import Visualizer
 
@@ -63,13 +63,17 @@ def main():
     print("=" * 60)
 
     # ── Generate workloads ────────────────────────────────────────────────────
-    wg = WorkloadGenerator(LOGICAL_CAPACITY)
+    hot_max  = int(LOGICAL_CAPACITY * 0.2)
+    wg = WorkloadGenerator(
+        max_lba     = LOGICAL_CAPACITY,
+        hot_range   = (0, hot_max),
+        cold_range  = (hot_max + 1, LOGICAL_CAPACITY - 1),
+    )
     workloads = {
-        "Sequential":       wg.generate_sequential(NUM_WRITES),
-        "Random":           wg.generate_random(NUM_WRITES),
-        "Hotspot (80/20)":  wg.generate_hotspot(NUM_WRITES,
-                                                  hot_ratio=0.8,
-                                                  hot_data_fraction=0.2),
+        "Sequential":       wg.sequential_workload(NUM_WRITES),
+        "Random":           wg.random_workload(NUM_WRITES),
+        "Hotspot (80/20)":  wg.hotspot_workload(NUM_WRITES),
+        "Mixed":            wg.mixed_workload(NUM_WRITES),
     }
 
     viz = Visualizer(output_dir="charts")
