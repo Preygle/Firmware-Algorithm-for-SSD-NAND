@@ -1,8 +1,12 @@
 # Adaptive Firmware Algorithms for SSD/NAND Efficiency & Reliability
 
+![Project Overview](Picture%201.png)
+
 This project models the internal firmware of a Solid State Drive (SSD), specifically simulating the Flash Translation Layer (FTL). It compares a traditional **Baseline FTL** algorithm against a deeply optimized **Adaptive FTL**, demonstrating how multi-objective heuristic mathematics can dynamically increase the lifespan of NAND flash memory.
 
 ## How NAND and SSDs are Simulated in Python
+
+![Simulation Methodology](Picture%202.png)
 
 This project builds a fully functional software replica of an SSD's internal hardware and firmware interactions using object-oriented Python.
 
@@ -67,6 +71,9 @@ The Baseline represents older, traditional, static FTL algorithms.
 ---
 
 ## 3. The Adaptive "Elite" Strategy
+
+![Adaptive FTL Strategy](Picture%203.png)
+
 The Adaptive FTL is a research-grade algorithm leveraging multi-objective mathematical heuristics to dynamically adapt to the stress profile of the active workload.
 
 ### 3.1. Dynamic Garbage Collection Threshold
@@ -112,6 +119,9 @@ To test the FTL algorithms, the simulator does not use random noise. It uses a b
 ---
 
 ## 5. System Execution (`main.py` & `export_results.py`)
+
+![System Execution](Picture%204.png)
+
 The simulation is orchestrated by a central runner script.
 
 1. **Configuration Setup**: The script defines the exact physical parameters of the simulated drive (e.g., 50 Blocks, 64 Pages, 10% Over-Provisioning).
