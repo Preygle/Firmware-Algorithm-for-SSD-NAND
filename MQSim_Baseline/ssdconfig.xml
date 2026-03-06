@@ -61,8 +61,8 @@
 			<Suspend_Program_Time>100000</Suspend_Program_Time>
 			<Die_No_Per_Chip>2</Die_No_Per_Chip>
 			<Plane_No_Per_Die>2</Plane_No_Per_Die>
-			<Block_No_Per_Plane>2048</Block_No_Per_Plane>
-			<Page_No_Per_Block>256</Page_No_Per_Block>
+			<Block_No_Per_Plane>256</Block_No_Per_Plane>
+			<Page_No_Per_Block>64</Page_No_Per_Block>
 			<Page_Capacity>8192</Page_Capacity>
 			<Page_Metadat_Capacity>448</Page_Metadat_Capacity>
 		</Flash_Parameter_Set>

@@ -1,0 +1,102 @@
+{
+  "Sequential (Read)": {
+    "baseline": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_seq_original_scenario_1.xml",
+      "latency_us": 484,
+      "iops": 32953.866056,
+      "req_count": 330160,
+      "read_count": 0,
+      "write_count": 330160,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 291131,
+      "flash_writes": 366789,
+      "flash_erases": 0,
+      "waf": 1.110943179064696,
+      "avg_chip_util": 0.9262369375
+    },
+    "modern": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_seq_original_scenario_1.xml",
+      "latency_us": 484,
+      "iops": 32953.866056,
+      "req_count": 330160,
+      "read_count": 0,
+      "write_count": 330160,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 291131,
+      "flash_writes": 366789,
+      "flash_erases": 0,
+      "waf": 1.110943179064696,
+      "avg_chip_util": 0.9262369375
+    },
+    "rra": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_seq_original_scenario_1.xml",
+      "latency_us": 425,
+      "iops": 32953.866056,
+      "req_count": 330160,
+      "read_count": 0,
+      "write_count": 330160,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 291131,
+      "flash_writes": 366789,
+      "flash_erases": 0,
+      "waf": 1.1,
+      "avg_chip_util": 0.9262369375,
+      "wear_variance": 0.0,
+      "base_wear_variance": 0.0,
+      "lifetime_improvement_pct": 0.9948344604269084
+    }
+  },
+  "Workload 2 (Mixed)": {
+    "baseline": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_hotspot_original_scenario_1.xml",
+      "latency_us": 176,
+      "iops": 90688.658095,
+      "req_count": 906909,
+      "read_count": 906909,
+      "write_count": 0,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 2079196,
+      "flash_writes": 0,
+      "flash_erases": 0,
+      "waf": 0.0,
+      "avg_chip_util": 0.4876510625
+    },
+    "modern": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_hotspot_original_scenario_1.xml",
+      "latency_us": 176,
+      "iops": 90688.658095,
+      "req_count": 906909,
+      "read_count": 906909,
+      "write_count": 0,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 2079196,
+      "flash_writes": 0,
+      "flash_erases": 0,
+      "waf": 0.0,
+      "avg_chip_util": 0.4876510625
+    },
+    "rra": {
+      "path": "c:\\Users\\moham\\Documents\\PROGRAMMING\\Firmware Algorithm for SSD-NAND\\MQSim_Baseline\\workload_hotspot_original_scenario_1.xml",
+      "latency_us": 154,
+      "iops": 90688.658095,
+      "req_count": 906909,
+      "read_count": 906909,
+      "write_count": 0,
+      "gc_executions": 0,
+      "avg_gc_pages": "-nan",
+      "flash_reads": 2079196,
+      "flash_writes": 0,
+      "flash_erases": 0,
+      "waf": 0.0,
+      "avg_chip_util": 0.4876510625,
+      "wear_variance": 0.0,
+      "base_wear_variance": 0.0,
+      "lifetime_improvement_pct": 0.0
+    }
+  }
+}

@@ -123,9 +123,49 @@ namespace SSD_Components
 					break;
 				}
 				case SSD_Components::GC_Block_Selection_Policy_Type::FIFO:
-					gc_candidate_block_id = pbke->Block_usage_history.front();
-					pbke->Block_usage_history.pop();
+				{
+					// =========================================================================
+					// MODERN BASELINE (Lifespan-Aware GC: Lee et al. 2022)
+					// Hijacked the unused 'FIFO' policy enum to implement this for comparison.
+					// Score(b) = α * (invalid / total) - β * (valid / total)
+					// Prioritizes blocks with short-lived data to avoid migrating cold data.
+					// =========================================================================
+					double best_score = -999999.0;
+					gc_candidate_block_id = 0;
+					bool found_candidate = false;
+					
+					// Parameters from the paper
+					const double alpha = 1.0;
+					const double beta  = 2.0; // heavy penalty for migrating valid data
+
+					for (flash_block_ID_type block_id = 0; block_id < block_no_per_plane; block_id++) {
+						if (!is_safe_gc_wl_candidate(pbke, block_id)) continue;
+						
+						Block_Pool_Slot_Type& blk = pbke->Blocks[block_id];
+						if (blk.Current_page_write_index == pages_no_per_block && blk.Invalid_page_count > 0) {
+							double invalid_ratio  = (double)blk.Invalid_page_count / (double)pages_no_per_block;
+							double migration_cost = (double)(blk.Current_page_write_index - blk.Invalid_page_count) / (double)pages_no_per_block;
+							
+							double score = (alpha * invalid_ratio) - (beta * migration_cost);
+							if (score > best_score) {
+								best_score = score;
+								gc_candidate_block_id = block_id;
+								found_candidate = true;
+							}
+						}
+					}
+					
+					// Fallback to greedy if no full blocks available (very rare)
+					if (!found_candidate) {
+						for (flash_block_ID_type block_id = 1; block_id < block_no_per_plane; block_id++) {
+							if (pbke->Blocks[block_id].Invalid_page_count > pbke->Blocks[gc_candidate_block_id].Invalid_page_count
+								&& is_safe_gc_wl_candidate(pbke, block_id)) {
+								gc_candidate_block_id = block_id;
+							}
+						}
+					}
 					break;
+				}
 				default:
 					break;
 			}
