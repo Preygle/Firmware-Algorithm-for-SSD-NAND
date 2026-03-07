@@ -1,0 +1,8 @@
+# Windows Zone.Identifier alternate data stream metadata files
+*Zone.Identifier
+*:Zone.Identifier
+
+# Build artifacts
+*.o
+*.a
+*.out
