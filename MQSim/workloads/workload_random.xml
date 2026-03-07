@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  workload_random.xml
+  ====================
+  Uniformly random write workload — 100,000 writes over full LBA space.
+  Matches Python sim: generate_random(100_000)
+
+  Run:
+    ./MQSim -i ssdconfig_rra.xml    -w workloads/workload_random.xml
+    ./MQSim -i ssdconfig_baseline.xml -w workloads/workload_random.xml
+-->
+<MQSim_IO_Scenarios>
+  <IO_Scenario>
+
+    <IO_Flow_Parameter_Set_Trace_Based>
+      <Priority_Class>URGENT</Priority_Class>
+      <Device_Level_Data_Caching_Mode>NO_CACHE</Device_Level_Data_Caching_Mode>
+      <Channel_IDs>0,1,2,3,4,5,6,7</Channel_IDs>
+      <Chip_IDs>0,1</Chip_IDs>
+      <Die_IDs>0,1</Die_IDs>
+      <Plane_IDs>0,1</Plane_IDs>
+      <Initial_Occupancy_Percentage>0</Initial_Occupancy_Percentage>
+      <File_Path>workloads/trace_random.trace</File_Path>
+      <Percentage_To_Be_Executed>100</Percentage_To_Be_Executed>
+      <Percentage_Of_Data_Accessed>100</Percentage_Of_Data_Accessed>
+    </IO_Flow_Parameter_Set_Trace_Based>
+
+  </IO_Scenario>
+</MQSim_IO_Scenarios>

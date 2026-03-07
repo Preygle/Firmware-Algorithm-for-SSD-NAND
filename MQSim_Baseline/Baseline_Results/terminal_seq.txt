@@ -1,4 +1,4 @@
-MQSim started at Fri Mar  6 11:17:41 2026
+MQSim started at Fri Mar  6 23:48:07 2026
 
 ******************************
 Executing scenario 1 out of 1 .......
@@ -28,6 +28,7 @@ Executing scenario 1 out of 1 .......
 
 [============>       ]  60% progress in Host.IO_Flow.Synth.No_0
 
+Synthetic Message Generator: The same address is always repeated due to configuration parameters!
 [=============>      ]  65% progress in Host.IO_Flow.Synth.No_0
 
 [==============>     ]  70% progress in Host.IO_Flow.Synth.No_0
@@ -44,11 +45,11 @@ Executing scenario 1 out of 1 .......
 
 [====================]  100% progress in Host.IO_Flow.Synth.No_0
 
-MQSim finished at Fri Mar  6 11:17:43 2026
+MQSim finished at Fri Mar  6 23:48:11 2026
 
-Total simulation time: 0:0:2
+Total simulation time: 0:0:4
 
 Writing results to output file .......
-Flow Host.IO_Flow.Synth.No_0 - total requests generated: 60987 total requests serviced:60987
-                   - device response time: 2623 (us) end-to-end request delay:2623 (us)
+Flow Host.IO_Flow.Synth.No_0 - total requests generated: 100000 total requests serviced:100000
+                   - device response time: 2810 (us) end-to-end request delay:2810 (us)
 Simulation complete; Press any key to exit.

@@ -1,0 +1,7 @@
+g++ -std=c++11 -O3 -g -Isrc/exec -Isrc/host -Isrc/nvm_chip -Isrc/nvm_chip/flash_memory -Isrc/sim -Isrc/ssd -Isrc/utils -Isrc -c src/ssd/GC_and_WL_Unit_Page_Level.cpp -o build/ssd/GC_and_WL_Unit_Page_Level.o
+src/ssd/GC_and_WL_Unit_Page_Level.cpp: In member function ‘virtual void SSD_Components::GC_and_WL_Unit_Page_Level::Check_gc_required(unsigned int, const NVM::FlashMemory::Physical_Page_Address&)’:
+src/ssd/GC_and_WL_Unit_Page_Level.cpp:147:93: error: ‘class SSD_Components::Block_Pool_Slot_Type’ has no member named ‘Valid_page_count’; did you mean ‘Invalid_page_count’?
+  147 |                                                         double migration_cost = (double)blk.Valid_page_count   / (double)pages_no_per_block;
+      |                                                                                             ^~~~~~~~~~~~~~~~
+      |                                                                                             Invalid_page_count
+make: *** [Makefile:37: build/ssd/GC_and_WL_Unit_Page_Level.o] Error 1

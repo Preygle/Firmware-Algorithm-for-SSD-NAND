@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- ULTRA-FAST: 0% occupancy (no preconditioning), 5000 requests, hotspot 20% -->
+<!-- All 3 algos finish in under 3 seconds. -->
+<Workload_Parameter_Set>
+    <IO_Scenario>
+        <IO_Flow_Parameter_Set_Synthetic>
+            <Flow_Type>SYNTHETIC</Flow_Type>
+            <Priority_Class>URGENT</Priority_Class>
+            <Read_Percentage>0</Read_Percentage>
+            <Address_Distribution>HOTCOLD</Address_Distribution>
+            <Percentage_of_Hot_Region>20</Percentage_of_Hot_Region>
+            <Generated_Aligned_Addresses>true</Generated_Aligned_Addresses>
+            <Hot_Region_Percentage_Read>0</Hot_Region_Percentage_Read>
+            <Average_Request_Size>8</Average_Request_Size>
+            <Variance_Request_Size>0</Variance_Request_Size>
+            <Request_Queue_Depth>8</Request_Queue_Depth>
+            <Total_Requests_To_Generate>5000</Total_Requests_To_Generate>
+            <Working_Set_Percentage>80</Working_Set_Percentage>
+            <Initial_Occupancy_Percentage>0</Initial_Occupancy_Percentage>
+            <Stop_Time>0</Stop_Time>
+            <PRPG_Seed>932</PRPG_Seed>
+        </IO_Flow_Parameter_Set_Synthetic>
+    </IO_Scenario>
+</Workload_Parameter_Set>

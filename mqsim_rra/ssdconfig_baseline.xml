@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  ssdconfig_baseline.xml
+  =======================
+  Identical to ssdconfig_rra.xml except:
+  - Compile MQSim WITHOUT the RRA patch (use vanilla GC_and_WL_Unit_Page_Level)
+  - GC_Block_Selection_Policy = GREEDY  (most-invalid-pages, no Weibull)
+  - No adaptive erase time, no Pareto tuning, no quarantine
+
+  Run with:
+    ./MQSim -i ssdconfig_baseline.xml -w workloads/workload_hotspot.xml
+-->
+
+<Sim_Config>
+  <SSD_Device_Configuration>
+    <Flash_Channel_Count>8</Flash_Channel_Count>
+    <Chip_No_Per_Channel>2</Chip_No_Per_Channel>
+    <Flash_Parameters>
+      <Die_No_Per_Chip>2</Die_No_Per_Chip>
+      <Plane_No_Per_Die>2</Plane_No_Per_Die>
+      <Block_No_Per_Plane>512</Block_No_Per_Plane>
+      <Page_No_Per_Block>256</Page_No_Per_Block>
+      <Page_Capacity>4096</Page_Capacity>
+      <Sector_Size_In_Byte>512</Sector_Size_In_Byte>
+      <Read_Latency_NS>40000</Read_Latency_NS>
+      <Read_Transfer_NS>100000</Read_Transfer_NS>
+      <Program_Latency_NS>200000</Program_Latency_NS>
+      <Program_Transfer_NS>100000</Program_Transfer_NS>
+      <Erase_Latency_NS>1500000</Erase_Latency_NS>
+      <Max_PE_Cycles>10000</Max_PE_Cycles>
+    </Flash_Parameters>
+    <Host_Interface_Type>NVME</Host_Interface_Type>
+    <Queue_Fetch_Size>512</Queue_Fetch_Size>
+    <Caching_Mechanism>SIMPLE</Caching_Mechanism>
+    <Data_Cache_Capacity_In_Page>1024</Data_Cache_Capacity_In_Page>
+    <Address_Mapping>PAGE_LEVEL</Address_Mapping>
+    <Ideal_Mapping_Table>false</Ideal_Mapping_Table>
+    <CMT_Capacity_In_Byte>1048576</CMT_Capacity_In_Byte>
+    <Transaction_Scheduling_Policy>OUT_OF_ORDER</Transaction_Scheduling_Policy>
+    <Overprovisioning_Ratio>0.10</Overprovisioning_Ratio>
+    <GC_Exect_Threshold>0.05</GC_Exect_Threshold>
+    <GC_Block_Selection_Policy>GREEDY</GC_Block_Selection_Policy>
+    <Use_Copyback_for_GC>false</Use_Copyback_for_GC>
+    <Preemptible_GC_Enabled>false</Preemptible_GC_Enabled>
+    <GC_Hard_Threshold>0.005</GC_Hard_Threshold>
+    <Dynamic_Wearleveling_Enabled>false</Dynamic_Wearleveling_Enabled>
+    <Static_Wearleveling_Enabled>false</Static_Wearleveling_Enabled>
+    <Static_Wearleveling_Threshold>100</Static_Wearleveling_Threshold>
+  </SSD_Device_Configuration>
+</Sim_Config>
