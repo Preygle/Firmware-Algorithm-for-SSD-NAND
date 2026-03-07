@@ -809,6 +809,3 @@ python main.py \
 | 6 | Endurance Model (TBW/DWPD/Lifetime CLI) | `feature_implementation.md` spec | 📋 Specified |
 
 ---
-
-*SanDisk Hackathon Submission — 2025*  
-*GitHub: https://github.com/Preygle/Firmware-Algorithm-for-SSD-NAND*
