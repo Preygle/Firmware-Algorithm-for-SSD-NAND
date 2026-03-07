@@ -51,19 +51,20 @@ This is achieved by layering three novel mechanisms on top of MQSim's existing F
 ## 2. Repository Structure
 
 ```
-Firmware Algorithm for SSD-NAND/
+Firmware-Algorithm-for-SSD-NAND/
 │
 ├── MQSim_Baseline/               ← Baseline + Modern simulation environment
 │   ├── MQSim.exe                 ← Pre-built MQSim binary (Windows)
 │   ├── ssdconfig_original.xml    ← SSD config for Baseline (GREEDY GC)
 │   ├── ssdconfig_modern.xml      ← SSD config for Modern (FIFO GC)
 │   ├── workload_seq_original.xml ← Sequential write workload
-│   ├── workload_rand_original.xml← Random write workload
+│   ├── workload_rand_original.xml ← Random write workload
 │   ├── workload_hotspot_original.xml ← Hotspot 80/20 workload
 │   ├── workload_seq_modern.xml   ← Same workloads for Modern config
 │   ├── workload_rand_modern.xml
 │   ├── workload_hotspot_modern.xml
 │   ├── run_all.ps1               ← PowerShell script to run all 6 sims
+│   ├── run_baseline.sh / run_fullscale.sh / run_minimal_test.sh
 │   └── [*_scenario_1.xml]        ← MQSim output result files
 │
 ├── mqsim_rra/                    ← RRA-FTL code and analysis
@@ -71,25 +72,27 @@ Firmware Algorithm for SSD-NAND/
 │   │   ├── GC_and_WL_Unit_Page_Level_RRA.h   ← RRA-FTL header (all constants)
 │   │   ├── GC_and_WL_Unit_Page_Level_RRA.cpp ← RRA-FTL implementation
 │   │   └── FTL_RRA_patch.cpp                 ← Annotated diff for FTL.cpp
-│   ├── workloads/                ← Workload XMLs for RRA runs
+│   ├── workloads/                ← Workload XMLs + traces for RRA runs
+│   │   ├── workload_sequential.xml, workload_random.xml, workload_hotspot.xml
+│   │   └── trace_sequential.trace, trace_random.trace, trace_hotspot.trace
+│   ├── results/
+│   │   ├── baseline/             ← Baseline run outputs (out_*.txt, data_*_baseline.xml)
+│   │   ├── graphs/               ← Generated PNG charts (extract_and_plot / plot_comparison)
+│   │   └── extracted_real_data.json
 │   ├── ssdconfig_rra.xml         ← SSD config for RRA-FTL runs
 │   ├── ssdconfig_baseline.xml    ← SSD config for RRA baseline comparison
 │   ├── extract_and_plot.py       ← Parses real XMLs + projects RRA metrics
 │   ├── parse_mqsim_output.py     ← Compares two result XMLs side-by-side
-│   ├── plot_comparison.py        ← Generates 6 publication-ready charts
-│   ├── Makefile                  ← Linux build
-│   ├── results/graphs/           ← Generated PNG charts
+│   ├── plot_comparison.py        ← Generates publication-ready charts
+│   ├── run_baseline_rra.sh       ← Run baseline sims (Linux/WSL), output to results/baseline
+│   ├── Makefile                  ← Linux build for RRA-FTL
 │   └── README_INTEGRATION.md     ← Step-by-step MQSim integration guide
 │
 ├── MQSim/                        ← Vanilla MQSim source (unmodified)
-├── MQSim_Adaptive/               ← MQSim source (adaptive variant)
-├── MQSim_local/                  ← MQSim source with local modifications
-├── SimpleSSD-FullSystem_local/   ← SimpleSSD gem5 full-system simulator
-├── feature_implementation.md     ← Endurance subsystem specification
-├── modern_gc_formula.md          ← Modern GC design notes
-├── reseach_papers.md             ← Literature references
-├── SSD_Firmware_Documentation.docx
-└── Dockerfile                    ← Ubuntu 18.04 image for Linux build
+├── MQSim_local                   ← MQSim local / custom build reference
+├── SimpleSSD-FullSystem_local    ← SimpleSSD gem5 full-system simulator reference
+├── .gitignore
+└── README.md                     ← This file
 ```
 
 ---
